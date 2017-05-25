@@ -6,7 +6,7 @@
 
     **输出目录**：`dist`
 
-    **输入文件**：`[filename].min.css`, `[filename].min.js`
+    **输出文件**：`tdx-<version>.css`, `tdx.min-<version>.js`
 
     **使用**：
 
