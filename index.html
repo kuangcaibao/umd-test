@@ -3,9 +3,67 @@
 <head>
   <title>webpack test</title>
   <meta charset="utf-8">
-  <script type="text/javascript" src="./dist/bundle.normal.js"></script>
+  <link rel="stylesheet" type="text/css" href="./dist/tdx-1.0.0.css">
+  <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="./dist/tdx-1.0.0.js"></script>
 </head>
 <body>
-
+<div id="app"></div>
 </body>
+<script type="text/javascript">
+  
+  // 测试 tdx-js-date
+  console.log(tdx.date.fmtDate(new Date()));
+
+  var conf = {
+
+    homeurl: location.pathname,
+
+    steps: {
+      "begin": {
+        title: "OTC是否开户",
+        info: "未开户",
+        url: "kh.html",
+        btntext: "去开户",
+        id: "begin",
+        op: {
+          "1": "fxcp",
+          "0": "end"
+        },
+        ckfunc: function(callback) {
+          callback({
+            code: 1,
+            info: "已开户"
+          });
+        }
+      },
+      "fxcp": {
+        id: "fxcp",
+        title: "风险测评",
+        info: "你的当前测评分数为xx,风险等级xx",
+        url: "cp.html",
+        btntext: "去测评",
+        op: {
+          "2": "zxcp"
+        }
+      },
+      "zxcp": {
+        id: "zxcp",
+        title: "征信测评",
+        info: "你的当前测评分数为xx,征信等级xx",
+        url: "cp.html",
+        btntext: "去测评",
+        op: {
+          "1": "end"
+        } 
+      },
+      "end": {
+        id: "end"
+      }
+    }
+  }
+
+  $("#app").tdxSdx(conf);
+
+</script>
 </html>
