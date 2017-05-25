@@ -6,6 +6,9 @@ var package = require("../package.json");
 var { version, author } = package;
 var time = new Date().toLocaleString();
 
+// css 文件提取出来单独生成一个文件
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 var config = {
   context: process.cwd(),
   entry: "./build/index",
@@ -17,6 +20,23 @@ var config = {
   // 模块
   module: {
 
+    rules: [
+
+      {
+        test: path.resolve(__dirname, "index.js"),
+        use: {
+          loader: "expose-loader",
+          options: "tdx"
+        }
+      },
+
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: ["css-loader"]
+        })
+      }
+    ]
   },
 
   // 插件
@@ -25,7 +45,11 @@ var config = {
       output: {
         preamble: `/* \r\n @version: ${version} \r\n @author: ${author} \r\n @time: ${time} \r\n */`
       }
-    })
+    }),
+    
+    new ExtractTextPlugin({
+      filename: `tdx-${version}.css`
+    }),
   ]
 }
 

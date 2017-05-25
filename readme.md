@@ -52,6 +52,22 @@ tdx.min-<version>.js    // 生产包
 
 > 资源文件，如图片文件暂时还没有规则如何处理
 
+** 如何使用这个 demo **
+
+按照一个正常的 `git` 项目流程
+
+```
+> git clone https://github.com/kuangcaibao/umd-test.git
+> cd umd-test
+> npm install
+```
+
+正常的情形下，执行完上述的操作，打包工程准备完成。
+
+执行 `npm run dev` 打包开发版
+
+执行 `npm run build` 打包生产版
+
 ## 3. tdx-js-* 示例
 
 示例 `demo` 地址: [https://github.com/kuangcaibao/tdx-js-date.git](https://github.com/kuangcaibao/tdx-js-date)
